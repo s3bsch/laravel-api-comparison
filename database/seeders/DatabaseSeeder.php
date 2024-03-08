@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\Robot\Type;
+use Database\Factories\Order\OrderFactory;
 use Database\Factories\Robot\RobotFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,8 +24,12 @@ class DatabaseSeeder extends Seeder
 
         $robotFactory = RobotFactory::new();
 
-        $robotFactory->create(['type' => Type::ONE]);
+        $robotOne = $robotFactory->create(['type' => Type::ONE]);
         $robotFactory->create(['type' => Type::OCF]);
         $robotFactory->create(['type' => Type::ODM]);
+
+        OrderFactory::new()
+            ->forRobot($robotOne)
+            ->create();
     }
 }

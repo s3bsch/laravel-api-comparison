@@ -15,6 +15,21 @@ use Illuminate\Support\Collection;
  */
 class RobotFactory extends BaseFactory
 {
+    public static function empty(int $id = null): Robot
+    {
+        $robot = new Robot();
+        $robot->setAttribute('id', $id);
+
+        return $robot;
+    }
+
+    public static function loadAny(array $columns = null): Robot
+    {
+        $columns ??= ['id'];
+
+        return Robot::firstOrFail($columns);
+    }
+
     public function definition(): array
     {
         return [
