@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Robot\Type;
 use Database\Factories\Robot\RobotFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,8 +21,10 @@ class DatabaseSeeder extends Seeder
         // In a real world application it would be better to have dedicated seeder classes.
         //  For this prototype it should be good enough to keep everything in one place.
 
-        RobotFactory::new()
-            ->count(3)
-            ->create();
+        $robotFactory = RobotFactory::new();
+
+        $robotFactory->create(['type' => Type::ONE]);
+        $robotFactory->create(['type' => Type::OCF]);
+        $robotFactory->create(['type' => Type::ODM]);
     }
 }

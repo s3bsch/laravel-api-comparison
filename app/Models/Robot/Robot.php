@@ -6,14 +6,16 @@ namespace App\Models\Robot;
 
 use App\Models\BaseModel;
 
-// TODO NEXT Add a type enumeration.
-
 /**
  * Simple robot model.
  *
  * @property-read int $id
  * @property string $name
+ * @property Type $type
  */
 class Robot extends BaseModel
 {
+    protected $casts = [
+        'type' => Type::class,
+    ];
 }

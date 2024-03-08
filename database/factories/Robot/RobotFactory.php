@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories\Robot;
 
 use App\Models\Robot\Robot;
+use App\Models\Robot\Type;
 use Database\Factories\BaseFactory;
 use Illuminate\Support\Collection;
 
@@ -18,6 +19,7 @@ class RobotFactory extends BaseFactory
     {
         return [
             'name' => $this->faker->firstNameFemale(),  // Because exactly today is International Women's Day…
+            'type' => Type::ONE,
         ];
     }
 }
