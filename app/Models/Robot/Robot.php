@@ -6,6 +6,7 @@ namespace App\Models\Robot;
 
 use App\Models\BaseModel;
 use App\Models\Order\Order;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
@@ -30,5 +31,15 @@ class Robot extends BaseModel
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    /*
+     * Scopes:
+     */
+
+    // TODO Provide a global scope if needed more often.
+    public function scopeId(EloquentBuilder $query, int $id): void
+    {
+        $query->where('id', $id);
     }
 }

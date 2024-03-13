@@ -1,8 +1,13 @@
 """ Simple robot. """
-type Robot {
+type Robot @model(class: "App\\Models\\Robot\\Robot") {
   id: ID!
+  name: String!
 }
 
 extend type Query {
-  robots: [Robot!]! @paginate(model: "App\\Models\\Robot\\Robot", defaultCount: 10)
+  robot(
+    id: ID! @scope(name: "id")
+  ): Robot! @find
+
+  robots: [Robot!]! @paginate(defaultCount: 10)
 }
