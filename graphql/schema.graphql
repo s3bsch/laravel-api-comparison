@@ -2,9 +2,11 @@ type Query {
     status: Status
 }
 
-" Simple status of the application. "
+""" Simple status of the application. """
 type Status {
   api: Boolean!
   cache: Boolean!
   database: Boolean!
 }
+
+#import types/*.graphql

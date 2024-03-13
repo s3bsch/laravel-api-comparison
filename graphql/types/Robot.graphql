@@ -1,0 +1,8 @@
+""" Simple robot. """
+type Robot {
+  id: ID!
+}
+
+extend type Query {
+  robots: [Robot!]! @paginate(model: "App\\Models\\Robot\\Robot", defaultCount: 10)
+}
